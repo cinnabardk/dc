@@ -3,7 +3,7 @@ dbdata:
   volumes:
     - /var/lib/mysql
 
-dbserver:
+db:
   image: mysql:latest
   volumes_from:
     - dbdata
@@ -18,15 +18,16 @@ wpdata:
   volumes:
     - /var/www/html
 
-wpdemo:
+wp:
   image: wordpress:latest
   links:
-    - dbserver:mysql
+    - db:mysql
   volumes_from:
     - wpdata
-  ports:
-    - "8080:80"
+  expose:
+    - "80"
   environment:
+    - VIRTUAL_HOST=gb-wp.allancorfix.dk
     - WORDPRESS_DB_NAME=wp
     - WORDPRESS_DB_USER=wp_demo
     - WORDPRESS_DB_PASSWORD=Xumkos26
