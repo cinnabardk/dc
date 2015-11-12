@@ -10,7 +10,7 @@ ENV VNC_PW g3mpx4k
 ENV VIRTUAL_HOST stats.allancorfix.dk
 ENV VIRTUAL_PORT 7777
 
-RUN apt-get install software-properties-common
+RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:x2go/stable
 RUN add-apt-repository ppa:openjdk-r/ppa
 
